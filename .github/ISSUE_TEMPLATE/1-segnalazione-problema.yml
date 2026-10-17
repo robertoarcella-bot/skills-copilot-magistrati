@@ -1,0 +1,53 @@
+name: Segnalazione di problema
+description: Una skill ha prodotto un risultato errato, incompleto o non neutrale.
+title: "[Problema] <nome della skill>: "
+labels: ["problema"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Non incollare atti, estratti, nomi, numeri di ruolo o output generati su atti reali.** Descrivi il problema in termini generali o con un esempio inventato.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill interessata
+      placeholder: es. pm-mappatura-elementi
+    validations:
+      required: true
+  - type: dropdown
+    id: ambiente
+    attributes:
+      label: Ambiente
+      options:
+        - Microsoft 365 Copilot (agente con skill)
+        - Microsoft 365 Copilot (istruzioni incollate)
+        - Altro
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo di problema
+      options:
+        - Contenuto inventato o non presente negli atti (allucinazione)
+        - Sintesi incompleta o mappa di copertura errata
+        - Squilibrio tra le parti / tra accusa e difesa
+        - La skill ha espresso valutazioni o suggerito un esito
+        - Checkpoint non rispettato
+        - Norma o precedente citato a memoria
+        - Altro
+    validations:
+      required: true
+  - type: textarea
+    id: descrizione
+    attributes:
+      label: Cosa è successo e cosa ti aspettavi
+    validations:
+      required: true
+  - type: checkboxes
+    id: dati
+    attributes:
+      label: Dichiarazione
+      options:
+        - label: Confermo di non aver inserito dati di fascicoli reali.
+          required: true

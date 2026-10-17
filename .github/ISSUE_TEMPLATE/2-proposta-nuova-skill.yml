@@ -1,0 +1,61 @@
+name: Proposta di nuova skill
+description: Un'attività ricorrente che una skill potrebbe agevolare.
+title: "[Proposta] "
+labels: ["proposta"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Descrivi l'attività senza riferimenti a procedimenti reali.
+  - type: dropdown
+    id: settore
+    attributes:
+      label: Settore
+      options:
+        - Civile
+        - Penale - pubblico ministero
+        - Penale - giudice (GIP/GUP)
+        - Penale - giudice del dibattimento
+        - Penale - appello
+        - Organizzazione dell'ufficio
+    validations:
+      required: true
+  - type: textarea
+    id: attivita
+    attributes:
+      label: Attività da agevolare
+      description: Cosa fa oggi il magistrato, quanto tempo richiede, quali atti coinvolge.
+    validations:
+      required: true
+  - type: textarea
+    id: prodotto
+    attributes:
+      label: Prodotto atteso
+      description: es. tabella, scheda, checklist, scadenzario.
+    validations:
+      required: true
+  - type: dropdown
+    id: perimetro
+    attributes:
+      label: Uso ammesso dal CSM (aggiornamento 22.7.2026) a cui si riconduce
+      options:
+        - Classificazione e categorizzazione degli atti
+        - Analisi strutturata degli atti delle parti
+        - Sintesi documentale
+        - Confronto tra posizioni (thema decidendum / probandum)
+        - Compilazione assistita di atti standardizzati o moduli
+        - Ricerca e consultazione di banche dati
+        - Organizzazione dell'ufficio, tabelle, calendari
+        - Revisione linguistica
+        - Non so / da valutare
+    validations:
+      required: true
+  - type: checkboxes
+    id: limiti
+    attributes:
+      label: Verifiche
+      options:
+        - label: La skill proposta non redige dispositivi né motivazioni di provvedimenti giurisdizionali.
+          required: true
+        - label: Non ho inserito dati di fascicoli reali.
+          required: true

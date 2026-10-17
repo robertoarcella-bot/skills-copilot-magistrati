@@ -1,0 +1,10 @@
+# Revisori obbligatori per percorso (attivare "Require review from Code Owners" nella protezione del ramo main).
+# Provvisorio: tutto assegnato al maintainer. Quando sarà creata l'organizzazione del Laboratorio,
+# sostituire con i team (es. @laboratorio-ia-napoli/revisori-civile, @laboratorio-ia-napoli/revisori-penale).
+
+*                              @robertoarcella-bot
+/skills/civile/                @robertoarcella-bot
+/skills/civile-integrative/    @robertoarcella-bot
+/skills/penale/                @robertoarcella-bot
+/scripts/                      @robertoarcella-bot
+/.github/                      @robertoarcella-bot

@@ -1,0 +1,40 @@
+name: Verifica di conformità (art. 15 l. 132/2025 e CSM)
+description: Dubbio sulla compatibilità di una skill con la legge o con le raccomandazioni del CSM.
+title: "[Conformità] <nome della skill>: "
+labels: ["conformità"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill interessata
+    validations:
+      required: true
+  - type: dropdown
+    id: profilo
+    attributes:
+      label: Profilo
+      options:
+        - Riserva della decisione al magistrato (art. 15, comma 1)
+        - Redazione di provvedimenti o del dispositivo
+        - Valutazione delle prove
+        - Segreto investigativo e dati riservati
+        - Profilazione o valutazioni predittive
+        - Sistemi non autorizzati / uso fuori dal tenant ministeriale
+        - Terzietà e simmetria tra le parti
+        - Altro
+    validations:
+      required: true
+  - type: textarea
+    id: passo
+    attributes:
+      label: Passo della skill in questione
+      description: Copia il passo del SKILL.md (non dati di fascicolo).
+    validations:
+      required: true
+  - type: textarea
+    id: rilievo
+    attributes:
+      label: Rilievo e fonte
+      description: Indica la disposizione o il paragrafo della delibera CSM.
+    validations:
+      required: true
