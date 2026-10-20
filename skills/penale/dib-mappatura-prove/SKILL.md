@@ -1,6 +1,6 @@
 ---
 name: dib-mappatura-prove
-description: Mappatura delle prove dibattimentali per il giudice penale, in posizione di terzietà - per ogni capo d'imputazione e per ogni elemento del fatto contestato (condotta, evento, nesso, elemento soggettivo, circostanze, identificazione) riporta le prove assunte con estratti dai verbali e dalle trascrizioni (pagina e riga), le contestazioni effettuate, la posizione dichiarata di accusa, difesa e parte civile, e descrive le divergenze tra dichiarazioni o tra prove senza valutarne l'attendibilità (art. 192 c.p.p. riservato al giudice). Tabelle simmetriche, mappa di copertura. Produce MAPPATURA_PROVE_[RG].md, aggiornabile. Usare quando il giudice chiede di ordinare le prove per capo, ritrovare cosa ha detto un testimone su un fatto, confrontare le deposizioni, preparare la camera di consiglio o la discussione.
+description: Mappatura delle prove dibattimentali per il giudice penale, in posizione di terzietà - per ogni capo d'imputazione e per ogni elemento del fatto contestato (condotta, evento, nesso, elemento soggettivo, circostanze, identificazione) riporta le prove assunte con estratti dai verbali e dalle trascrizioni (pagina e riga), le contestazioni effettuate, la posizione dichiarata di accusa, difesa e parte civile, e descrive le divergenze tra dichiarazioni o tra prove senza valutarne l'attendibilità (art. 192 c.p.p. riservato al giudice). Tabelle simmetriche, mappa di copertura. Attivabile in ogni fase, anche a posteriori dalle trascrizioni già disponibili, per intero o per capi scelti. Produce MAPPATURA_PROVE_[RG].md, aggiornabile. Usare quando il giudice chiede di ordinare le prove per capo, ritrovare cosa ha detto un testimone su un fatto, confrontare le deposizioni, preparare la camera di consiglio o la discussione.
 ---
 
 # Mappatura delle prove dibattimentali
@@ -23,7 +23,16 @@ Ritrovare, per ciascun fatto da accertare, tutto ciò che il dibattimento ha pro
 
 ## Input
 
-`SCHEDA_DIBATTIMENTO_[RG].md` (skill `dib-scheda-fascicolo-dibattimento`) con la ripartizione validata; verbali e trascrizioni delle udienze; perizie e consulenze acquisite; documenti acquisiti; memorie e, se già depositate, conclusioni scritte delle parti. Se la scheda manca, eseguirla prima e dirlo in una riga.
+`SCHEDA_DIBATTIMENTO_[RG].md` (skill `dib-scheda-fascicolo-dibattimento`), anche in modalità essenziale, con la ripartizione validata; verbali e trascrizioni delle udienze (PDF); perizie e consulenze acquisite; documenti acquisiti; memorie e, se già depositate, conclusioni scritte delle parti. Dalla scheda si riprendono imputazioni, prove ammesse e sigle, senza reinserirle. Se la scheda manca, eseguirla prima in modalità essenziale e dirlo in una riga. La skill lavora sui testi scritti; i file audio o video non si elaborano, e il minuto di registrazione si riporta solo se risulta dal verbale.
+
+## Avvio e ambito
+
+La mappatura non è obbligatoria e non va avviata dalla prima udienza. All'avvio chiedere al giudice:
+1. **Momento**: *progressiva* (si aggiorna quando il giudice lo ritiene utile) oppure *retrospettiva* (si costruisce in qualsiasi fase dalle trascrizioni già disponibili).
+2. **Ambito**: tutti i capi oppure solo i capi, gli elementi o i dichiaranti indicati dal giudice. Un ambito ridotto si dichiara in testa all'output.
+3. **Scomposizione**: per elementi del fatto (Fase 1) oppure, più semplicemente, per capo e per dichiarante; in tal caso la Fase 1 si omette.
+
+**Retrospettiva a blocchi.** Le trascrizioni si elaborano un blocco per volta (un'udienza o un dichiarante), perché l'intero fascicolo può superare la capacità di una singola conversazione. Dopo ogni blocco: aggiornare la mappa di copertura, salvare o consegnare il file e chiedere il blocco successivo. Nel nuovo blocco si riparte dal file salvato, mai dal ricordo della conversazione; ciò che non è nel file o nei verbali caricati non si riporta.
 
 ---
 
@@ -82,7 +91,7 @@ E1 condotta; E2 evento; E3 nesso causale; E4 elemento soggettivo; E5 circostanze
 
 ### Fase 2 – Estrazione per elemento
 
-Per ogni elemento, ogni prova assunta che vi si riferisce:
+Per ogni elemento (o, se la Fase 1 è omessa, per capo e dichiarante), ogni prova assunta che vi si riferisce:
 - dichiarazioni: dichiarante (ruolo processuale; nome pseudonimizzato), qualità (testimone, persona offesa, imputato in procedimento connesso, imputato), udienza, verbale, pagina e riga, estratto tra caporali; domanda di chi ha condotto l'esame quando necessaria alla comprensione;
 - perizie e consulenze: quesito e passo rilevante, con indicazione dell'esame del perito o consulente in udienza;
 - documenti e atti irripetibili: estratto e fonte.
@@ -98,7 +107,7 @@ Per ciascun elemento: lettura delle prove proposta dall'accusa, dalla difesa di 
 
 ### Fase 5 – Quadro e copertura
 
-Quadro per capo: elementi con prove su un solo versante, su entrambi, nessuna prova assunta. Mappa di copertura di tutti i verbali e delle relative pagine.
+Quadro per capo: per ciascun elemento, numero degli estratti riportati e prove richiamate da ciascuna parte nelle memorie o conclusioni, con gli atti esaminati. Se per un elemento non sono stati individuati estratti, scrivere «nessun estratto individuato negli atti esaminati [sigle]»: la formula descrive l'esito della ricerca negli atti caricati, non dice che il fatto è o non è provato. Il quadro non classifica gli elementi per esito né per «versante» della prova. Mappa di copertura di tutti i verbali e delle relative pagine.
 
 **CHECKPOINT 2** – validazione.
 
@@ -110,6 +119,7 @@ Quadro per capo: elementi con prove su un solo versante, su entrambi, nessuna pr
 # MAPPATURA DELLE PROVE DIBATTIMENTALI
 **Tribunale di [..]** – R.G. Trib. n. [..] – **Aggiornata all'udienza del**: [..] – **Versione**: [1.0]
 **Base**: SCHEDA_DIBATTIMENTO v[..] – materiale F-DIB confermato il [data]
+**Momento**: [progressiva / retrospettiva, blocchi elaborati x/y] – **Ambito**: [tutti i capi / capi, elementi o dichiaranti indicati]
 
 ## Legenda sigle
 VU [data] = verbale d'udienza / trascrizione; PER = perizia; CT-PM / CT-DIF / CT-PC = consulenze; DOC [n] = documento acquisito.
@@ -139,15 +149,17 @@ E1 [..] – E2 [..] – ...
 [stessa struttura per E2 ... En e per gli altri capi]
 
 ## Quadro riepilogativo
-| Capo | Elemento | Prove indicate dall'accusa | Prove indicate dalla difesa | Nessuna prova assunta |
-|---|---|---|---|---|
+| Capo | Elemento | Estratti riportati (n.) | Prove richiamate dall'accusa | Prove richiamate dalla difesa | Prove richiamate dalla parte civile | Atti esaminati |
+|---|---|---|---|---|---|---|
 
 ## Mappa di copertura
 | Verbale / atto | Pagine | Letto per intero | Estratti in |
 |---|---|---|---|
-**Indicatori**: verbali esaminati [x/y]; estratti verificati letteralmente [x/y]; elementi senza prova assunta [n].
+**Indicatori**: verbali esaminati [x/y]; estratti verificati letteralmente [x/y].
 
 ## Registro aggiornamenti
+| Data | Momento e blocco | Atti elaborati | Tempo di verifica del giudice (facoltativo) |
+|---|---|---|---|
 
 ---
 *Nota di riserva.* [testo della regola comune]
@@ -161,8 +173,10 @@ E1 [..] – E2 [..] – ...
 - ogni estratto ha udienza, pagina e riga (o minuto del file audio);
 - divergenze e coincidenze descritte con la stessa formula e cercate con la stessa intensità per le prove d'accusa e di difesa;
 - nessuna parola valutativa sulle prove o sui dichiaranti; nessun fatto dichiarato provato;
-- colonne delle parti di estensione comparabile; nessun paragrafo utilizzabile come motivazione.
+- colonne delle parti di estensione comparabile; nessun paragrafo utilizzabile come motivazione;
+- il quadro riepilogativo non contiene formule come «non provato», «privo di prova» o «solo a carico / solo a discarico»;
+- in retrospettiva, ogni blocco elaborato compare nella mappa di copertura e nessun estratto proviene da un blocco non caricato.
 
 ## Modalità aggiornamento
 
-Dopo ogni udienza istruttoria: aggiungere le nuove prove con `[AGG. udienza del ..]` sotto gli elementi pertinenti, senza cancellare le voci precedenti; aggiornare quadro, mappa e registro; versione +0.1. Salvare `MAPPATURA_PROVE_[RG].md` se possibile, altrimenti in chat.
+Quando il giudice lo chiede (non necessariamente dopo ogni udienza): aggiungere le nuove prove con `[AGG. udienza del ..]` sotto gli elementi pertinenti, senza cancellare le voci precedenti; aggiornare quadro, mappa e registro; versione +0.1. Salvare `MAPPATURA_PROVE_[RG].md` se possibile, altrimenti in chat.

@@ -2,7 +2,16 @@
 
 Diciassette skill per i magistrati del settore penale, requirenti e giudicanti, derivate dall'esperienza delle skill forensi dello studio (analisi del fascicolo, mappatura dei fatti, valutazione da giudice terzo, audit delle citazioni, pseudonimizzazione) e dalle sei skill civili del Laboratorio. Sono riorganizzate secondo la posizione del magistrato penale e i limiti dell'art. 15 l. 23 settembre 2025, n. 132 e delle raccomandazioni CSM dell'8 ottobre 2025, aggiornate il 22 luglio 2026.
 
-Struttura piatta (una cartella per skill, `name` = nome della cartella), come richiesto dagli agenti di Microsoft 365 Copilot. Il prefisso indica il gruppo. Ogni `SKILL.md` è autosufficiente, contiene per intero le regole comuni e resta sotto i 18.000 caratteri; il limite degli agenti M365 è 20.000.
+Struttura piatta (una cartella per skill, `name` = nome della cartella), come richiesto dagli agenti di Microsoft 365 Copilot. Il prefisso indica il gruppo. Ogni `SKILL.md` è autosufficiente, contiene per intero le regole comuni e resta sotto i 19.000 caratteri; il limite degli agenti M365 è 20.000.
+
+## Stato: sperimentale
+
+Le diciassette skill penali sono **sperimentali**. L'approvazione dell'archivio comune non comporta la validazione delle singole skill. Ciascuna resta sperimentale fino a una verifica documentata in tre parti:
+- **tecnica**: controllo automatico e revisione del repository;
+- **giuridica**: revisione di settore;
+- **funzionale**: prova da parte di magistrati della funzione interessata, su fascicoli fittizi di diversa difficoltà, misurando il tempo complessivo (preparazione, caricamento, aggiornamento, correzione e verifica degli output) rispetto al lavoro ordinario.
+
+Le osservazioni dei magistrati si raccolgono in schede di osservazione numerate. Il CHANGELOG indica le modifiche che ne derivano.
 
 ## Gruppo 0 – Skill comuni (requirenti e giudicanti)
 
@@ -30,8 +39,8 @@ Struttura piatta (una cartella per skill, `name` = nome della cartella), come ri
 |---|---|---|
 | `gip-esame-richiesta-cautelare` | GIP | scheda di lettura della richiesta di misura, con verifica descrittiva della trasmissione degli elementi a favore (art. 291, comma 1, c.p.p.) |
 | `gip-gup-scheda-fascicolo` | GIP / GUP | scheda per archiviazione, opposizione, udienza preliminare, riti alternativi |
-| `dib-scheda-fascicolo-dibattimento` | dibattimento | scheda con separazione tra fascicolo del dibattimento e fascicolo del PM (artt. 431, 526 c.p.p.) |
-| `dib-mappatura-prove` | dibattimento | prove assunte per capo ed elemento del fatto, posizioni di accusa, difesa e parte civile |
+| `dib-scheda-fascicolo-dibattimento` | dibattimento | scheda con separazione tra fascicolo del dibattimento e fascicolo del PM (artt. 431, 526 c.p.p.); modalità essenziale (predefinita) o approfondita |
+| `dib-mappatura-prove` | dibattimento | prove assunte per capo ed elemento del fatto, posizioni di accusa, difesa e parte civile; facoltativa, attivabile in ogni fase anche dalle trascrizioni già disponibili |
 | `pen-studio-questioni-giudice` | GUP / dibattimento / appello | studio imparziale delle questioni processuali e di merito, checklist anti-bias |
 | `app-analisi-motivi-impugnazione` | appello / cassazione | tabella motivi, capi e punti della sentenza impugnata |
 | `pen-verifica-provvedimento-redatto` | tutte | controllo di completezza, citazioni e lingua del provvedimento **già scritto dal giudice** |

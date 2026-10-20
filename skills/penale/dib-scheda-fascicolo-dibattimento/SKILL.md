@@ -1,6 +1,6 @@
 ---
 name: dib-scheda-fascicolo-dibattimento
-description: Scheda del fascicolo per il giudice del dibattimento (monocratico o collegiale), in posizione di terzietà - separazione rigorosa tra atti del fascicolo per il dibattimento (art. 431 c.p.p.) e atti del fascicolo del pubblico ministero, segnalazione dei materiali non utilizzabili per la decisione (art. 526 c.p.p.) o utilizzabili solo nei limiti di letture e contestazioni, parti e difensori, imputazioni in testo integrale e loro modifiche (artt. 516-520 c.p.p.), indice delle prove ammesse (art. 495 c.p.p.) e del loro stato di assunzione, timeline delle udienze, dati per prescrizione e improcedibilità, questioni preliminari da segnalare. Solo dati e estratti, nessuna valutazione. Produce SCHEDA_DIBATTIMENTO_[RG].md, aggiornabile udienza per udienza. Usare quando il giudice chiede di schedare il fascicolo dibattimentale, preparare un'udienza, verificare cosa è utilizzabile, ricostruire lo stato dell'istruttoria o i termini.
+description: Scheda del fascicolo per il giudice del dibattimento (monocratico o collegiale), in posizione di terzietà - separazione rigorosa tra atti del fascicolo per il dibattimento (art. 431 c.p.p.) e atti del fascicolo del pubblico ministero, segnalazione dei materiali non utilizzabili per la decisione (art. 526 c.p.p.) o utilizzabili solo nei limiti di letture e contestazioni, parti e difensori, imputazioni in testo integrale e loro modifiche (artt. 516-520 c.p.p.), indice delle prove ammesse (art. 495 c.p.p.) e del loro stato di assunzione, timeline delle udienze, dati per prescrizione e improcedibilità, questioni preliminari da segnalare. Solo dati e estratti, nessuna valutazione. Modalità essenziale (predefinita) o approfondita, attivabile in ogni fase. Produce SCHEDA_DIBATTIMENTO_[RG].md, aggiornabile. Usare quando il giudice chiede di schedare il fascicolo dibattimentale, preparare un'udienza, verificare cosa è utilizzabile, ricostruire lo stato dell'istruttoria o i termini.
 ---
 
 # Scheda del fascicolo del dibattimento
@@ -24,6 +24,13 @@ Il giudice del dibattimento decide sulla base delle prove legittimamente acquisi
 ## Input
 
 Il fascicolo per il dibattimento, i verbali d'udienza e le trascrizioni, le ordinanze emesse, le liste testimoniali e le richieste di prova. Gli atti del fascicolo del PM si immettono **solo** se il giudice lo chiede e solo nei limiti in cui sono entrati legittimamente nel dibattimento (letture, contestazioni, acquisizioni consensuali): in tal caso vanno nella sezione separata della scheda.
+
+## Modalità
+
+All'avvio chiedere quale modalità usare; in mancanza di risposta, la **essenziale**.
+- **Essenziale** (predefinita): parti e imputazioni (Fase 2), indice delle prove ammesse con il loro stato (Fase 4, senza letture e contestazioni), timeline delle udienze (Fase 5, senza dati per la prescrizione), questioni aperte. Restano obbligatori il CHECKPOINT 0 e la ripartizione F-DIB / F-PM, anche in forma semplificata (elenco dei file con la sola etichetta).
+- **Approfondita**: tutte le fasi. Si attiva in qualsiasi momento del processo, quando ne emerga la complessità: la skill riprende la scheda essenziale già validata, completa solo le sezioni mancanti e non chiede di reinserire dati già presenti.
+La scelta non è un giudizio sulla complessità del processo: la fa il giudice e si può cambiare a ogni aggiornamento.
 
 ---
 
@@ -109,7 +116,8 @@ Timeline delle udienze (data, attività, rinvii e loro causa come da verbale, so
 ```markdown
 # SCHEDA DEL FASCICOLO DEL DIBATTIMENTO
 **Tribunale di [..], Sezione penale [..]** – R.G. Trib. n. [..] – R.G.N.R. n. [..] – Giudice/Collegio: [..]
-**Aggiornata all'udienza del**: [..] – **Versione**: [1.0]
+**Aggiornata all'udienza del**: [..] – **Versione**: [1.0] – **Modalità**: [essenziale / approfondita]
+> In modalità essenziale si compilano le sezioni 1, 2, 3 (solo etichette), 5 (senza 5.1), 6 e 8; le altre riportano «[non compilata: modalità essenziale]».
 
 ## 1. Parti
 | Soggetto | Qualità | Difensore | Costituzione / revoca (data, verbale) |
@@ -149,11 +157,13 @@ Modifiche: [data, verbale, testo integrale, richieste conseguenti]
 | Capo | Data del fatto | Atti interruttivi / sospensivi (fonte) | Periodi di sospensione da verbale | Norme (Normattiva) |
 |---|---|---|---|---|
 
-## 8. Segnalazioni
-[Materiali da verificare ai sensi dell'art. 526 c.p.p.; atti richiamati e non presenti; trascrizioni mancanti.]
+## 8. Questioni aperte e segnalazioni
+[Questioni e istanze pendenti o riservate, con fonte; materiali da verificare ai sensi dell'art. 526 c.p.p.; atti richiamati e non presenti; trascrizioni mancanti.]
 
 ## 9. Mappa di copertura
 ## Registro aggiornamenti
+| Data | Modalità | Atti elaborati | Tempo di verifica del giudice (facoltativo) |
+|---|---|---|---|
 
 ---
 *Nota di riserva.* [testo della regola comune]
@@ -170,4 +180,4 @@ Modifiche: [data, verbale, testo integrale, richieste conseguenti]
 
 ## Modalità aggiornamento
 
-Dopo ogni udienza: aggiornare timeline, stato delle prove, letture e contestazioni, ordinanze; nuove voci con `[AGG. udienza del ..]`; versione +0.1. La scheda è base per `dib-mappatura-prove` e `pen-studio-questioni-giudice`. Salvare `SCHEDA_DIBATTIMENTO_[RG].md` se possibile, altrimenti in chat.
+Non è richiesto un aggiornamento a ogni udienza: la scheda può essere aggiornata quando il giudice lo ritiene utile, anche in un'unica volta dai verbali già disponibili. A ogni aggiornamento: aggiornare timeline, stato delle prove, letture e contestazioni, ordinanze; nuove voci con `[AGG. udienza del ..]`; versione +0.1. La scheda è base per `dib-mappatura-prove` e `pen-studio-questioni-giudice`. Salvare `SCHEDA_DIBATTIMENTO_[RG].md` se possibile, altrimenti in chat.
